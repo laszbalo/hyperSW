@@ -13,12 +13,11 @@
   "license": "ISC",
   "devDependencies": {
     "hyperhtml": "^1.0.2",
+    "viperhtml-webpack-plugin": "github:laszbalo/viperHTML-webpack-plugin",
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
-    "serve": "^9.4.0",
-    "viperhtml": "github:laszbalo/viperHTML#standalone-template-info",
-    "viperhtml-webpack-plugin": "github:laszbalo/viperHTML-webpack-plugin"
+    "viperhtml": "github:laszbalo/viperHTML#standalone-template-info"
   }
 }
