@@ -1,10 +1,10 @@
 {
   "background_color": "#ffffff",
-  "description": "hyperHTML & SW",
+  "description": "viperHTML & SW",
   "display": "standalone",
-  "name": "hyperHTML & SW",
+  "name": "viperHTML & SW",
   "orientation": "portrait-primary",
-  "short_name": "hyperSW",
+  "short_name": "viperSW",
   "start_url": "./",
   "theme_color": "#ffffff",
   "icons": [

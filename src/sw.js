@@ -1,27 +1,4 @@
-// create a fake DOM environment
-// in order to generate HTML pages right here!
-importScripts('js/basichtml.js');
-
-// use basicHTML to create a new document for this site/page
-const {Document, HTMLElement} = basicHTML;
-self.document = new Document();
-// setup the html element for this user
-document.documentElement.setAttribute('lang', 'en');
-
-// if needed, basicHTML also provides Custom Elements
-self.customElements = document.customElements;
-self.HTMLElement = HTMLElement;
-// so you could have a 100% Custom Elements
-// driven offline PWA without needing
-// any extra request beside hyperHTML
-// and Custom Element definitions
-
-// anyway, once a document is made available
-// we can finally import hyperHTML too
-importScripts('js/hyperhtml.js');
-const {bind} = hyperHTML;
-// the same library, for this example,
-// is used on the client side too!
+const viperHTML = require('viperhtml');
 
 // Now let's use the SW cache feature
 const db = caches.open('offline');
@@ -40,16 +17,33 @@ const files = [
   'manifest.json',
   'css/main.css',
   'js/main.js',
-  'js/hyperhtml.js'
+  'js/hyperhtml.js' // it is used by the UI thread
 ];
 
-// our main offline /index.html page
-// it returns basicHTML document as string,
-// manipulated through hyperHTML
-const indexPage = new Response(
-  (bind(document.documentElement)
-  `<head>
-    <title>${'hyperHTML does SW'}</title>
+function resolveLater(ms, v) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, ms, v)
+  })
+};
+
+const h1 = [
+  Promise.resolve('🍾'),
+  resolveLater(4000, 'Offline'),
+  resolveLater(5000, 'viperHTML'),
+  resolveLater(6000, '🎉'),
+  resolveLater(7000, '')
+];
+
+
+const stream = new ReadableStream({
+  start(controller) {
+    const encoder = new TextEncoder()
+    const asyncRender = viperHTML.async()
+
+    asyncRender(chunk => controller.enqueue(encoder.encode(chunk)))/*c*/`<!doctype>
+<html lang="en">
+  <head>
+    <title>${'viperHTML does SW'}</title>
     <meta name=viewport content="width=device-width">
     <meta name="theme-color" content="#ffffff">
     <link rel=manifest href=${files[0]}>
@@ -58,13 +52,19 @@ const indexPage = new Response(
     <script defer src=${files[2]}></script>
   </head>
   <body>
-    <h1>${'🍾 Offline hyperHTML 🎉'}</h1>
+    <h1>${h1[0]} ${h1[1]} ${h1[2]} ${h1[3]}${h1[4]}</h1>
     <main></main>
-  </body>`
-  ).parentNode.toString(),
-  {
-    headers: {
-      'Content-Type': 'text/html;charset=utf-8'
+  </body>
+<html>`.then(function() {
+      controller.close()
+    })
+  }
+})
+
+// our main offline /index.html page
+const indexPage = new Response(stream, {
+  headers: {
+    'Content-Type': 'text/html;charset=utf-8'
     }
   }
 );
@@ -79,7 +79,7 @@ const views = {
   404: new Response('Not found', {status: 404}),
 
   // either via github
-  '/hyperSW/': indexPage,
+  '/viperSW/': indexPage,
   // or directly
   '/': indexPage
 };

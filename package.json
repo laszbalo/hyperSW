@@ -1,24 +1,24 @@
 {
-  "name": "hypersw",
+  "name": "vipersw",
   "version": "0.0.0",
-  "description": "hyperHTML does Service Worker too",
+  "description": "viperHTML does Service Worker too",
   "scripts": {
-    "basic": "node -e 'var fs=require(\"fs\");fs.writeFileSync(\"js/basichtml.js\",fs.readFileSync(require.resolve(\"basichtml/web.js\")))'",
-    "hyper": "node -e 'var fs=require(\"fs\");fs.writeFileSync(\"js/hyperhtml.js\",fs.readFileSync(require.resolve(\"hyperhtml/min.js\")))'",
-    "build": "npm run basic && npm run hyper"
+    "hyper": "node -e 'var fs=require(\"fs\");fs.writeFileSync(\"dist/js/hyperhtml.js\",fs.readFileSync(require.resolve(\"hyperhtml/min.js\")))'",
+    "build": "npm run hyper && webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WebReflection/hyperSW.git"
+    "url": "git+https://github.com/laszbalo/viperSW.git"
   },
-  "author": "Andrea Giammarchi",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/WebReflection/hyperSW/issues"
-  },
-  "homepage": "https://github.com/WebReflection/hyperSW#readme",
   "devDependencies": {
-    "basichtml": "^0.9.1",
-    "hyperhtml": "^1.0.2"
+    "hyperhtml": "^1.0.2",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "serve": "^9.4.0",
+    "viperhtml": "github:laszbalo/viperHTML#standalone-template-info",
+    "viperhtml-webpack-plugin": "github:laszbalo/viperHTML-webpack-plugin"
   }
 }
