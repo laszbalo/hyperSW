@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "viperHTML does Service Worker too",
   "scripts": {
-    "hyper": "node -e 'var fs=require(\"fs\");fs.writeFileSync(\"dist/js/hyperhtml.js\",fs.readFileSync(require.resolve(\"hyperhtml/min.js\")))'",
+    "hyper": "node -e 'var fs=require(\"fs\");fs.writeFileSync(\"js/hyperhtml.js\",fs.readFileSync(require.resolve(\"hyperhtml/min.js\")))'",
     "build": "npm run hyper && webpack"
   },
   "repository": {

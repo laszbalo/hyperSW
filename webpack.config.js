@@ -7,7 +7,8 @@ module.exports = {
   target: 'webworker',
   mode: 'development',
   output: {
-    filename: 'sw.js'
+    filename: 'sw.js',
+    path: __dirname
   },
   plugins: [
     new ProvidePlugin({
