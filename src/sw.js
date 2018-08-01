@@ -28,10 +28,11 @@ function resolveLater(ms, v) {
 
 const h1 = [
   Promise.resolve('🍾'),
-  resolveLater(4000, 'Offline'),
-  resolveLater(5000, 'viperHTML'),
-  resolveLater(6000, '🎉'),
-  resolveLater(7000, '')
+  resolveLater(1000, 'Offline'),
+  resolveLater(1300, 'viperHTML'),
+  resolveLater(1600, 'can stream 🏞️'),
+  resolveLater(1900, '🎉'),
+  resolveLater(2100, '')
 ];
 
 
