@@ -8,7 +8,6 @@ npm i
 npm run build
 # for production build
 npm run build -- --mode=production
-cd dist
 npx serve
 ```
 

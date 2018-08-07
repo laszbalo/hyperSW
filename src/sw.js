@@ -30,8 +30,8 @@ const h1 = [
   Promise.resolve('🍾'),
   resolveLater(1000, 'Offline'),
   resolveLater(1300, 'viperHTML'),
-  resolveLater(1600, 'can stream 🏞️'),
-  resolveLater(1900, '🎉'),
+  resolveLater(1600, '🎉'),
+  resolveLater(1900, ' can stream 🏞️'),
   resolveLater(2100, '')
 ];
 
