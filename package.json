@@ -12,12 +12,15 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "babel-loader": "^8.0.0-beta.4",
+    "babel-plugin-viperhtml": "github:laszbalo/babel-plugin-viperhtml",
     "hyperhtml": "^1.0.2",
-    "viperhtml-webpack-plugin": "github:laszbalo/viperHTML-webpack-plugin",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
+    "viperHTML-template-info-from-transpiled-templates": "github:laszbalo/viperHTML-template-info-from-transpiled-templates",
     "viperhtml": "github:laszbalo/viperHTML#standalone-template-info"
   }
 }
